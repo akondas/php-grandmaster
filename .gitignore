@@ -1,0 +1,4 @@
+/vendor/
+humbuglog.*
+/bin/phpunit
+.coverage
