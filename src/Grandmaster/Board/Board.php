@@ -22,8 +22,8 @@ class Board
      */
     public function addPiece(Piece $piece, Square $square)
     {
-        if (isset($this->pieces[$square])) {
-            throw BoardException::squareNotEmpty();
+        if (isset($this->pieces[(string) $square])) {
+            throw BoardException::squareNotEmpty((string) $square);
         }
 
         $this->pieces[(string) $square] = $piece;
