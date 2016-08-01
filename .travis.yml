@@ -1,0 +1,15 @@
+language: php
+
+matrix:
+  fast_finish: true
+
+  include:
+    - os: linux
+      php: '7.0'
+
+install:
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar install --dev --no-interaction --ignore-platform-reqs
+
+script:
+  - bin/phpunit
