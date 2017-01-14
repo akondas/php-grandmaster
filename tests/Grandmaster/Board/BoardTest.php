@@ -1,11 +1,11 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Grandmaster\Board;
 
-use Grandmaster\Piece\King;
-use Grandmaster\Piece\Knight;
+use Grandmaster\Pieces\King;
+use Grandmaster\Pieces\Knight;
 
 class BoardTest extends \PHPUnit_Framework_TestCase
 {

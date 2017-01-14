@@ -1,11 +1,11 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Grandmaster\Board;
 
 use Grandmaster\Exception\BoardException;
-use Grandmaster\Piece\Piece;
+use Grandmaster\Piece;
 
 class Board
 {

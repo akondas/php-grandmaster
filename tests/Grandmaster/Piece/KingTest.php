@@ -1,10 +1,10 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace tests\Grandmaster\Piece;
 
-use Grandmaster\Piece\King;
+use Grandmaster\Pieces\King;
 
 class KingTest extends \PHPUnit_Framework_TestCase
 {
