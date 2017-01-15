@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Grandmaster\Board;
+namespace Grandmaster\Chessboard;
 
 class Square
 {

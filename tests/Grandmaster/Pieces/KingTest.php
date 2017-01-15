@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace tests\Grandmaster\Piece;
+namespace tests\Grandmaster\Pieces;
 
 use Grandmaster\Pieces\King;
 
