@@ -1,0 +1,143 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://chessboardjs.com/js/chessboard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Used to get images -->
+    <div id="board" class="board"></div>
+    <br />
+    <div class="info">
+        <label>Strategy: </label>
+        <select id="strategy">
+            <option value="Grandmaster\Strategy\RandomMove">Random move</option>
+        </select>
+        <br /><br />
+        Move history:<br />
+        <div id="move-history" class="move-history">
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function() {
+            var game = new Chess();
+            var onDragStart = function (source, piece, position, orientation) {
+                if (game.in_checkmate() === true || game.in_draw() === true ||
+                    piece.search(/^b/) !== -1) {
+                    return false;
+                }
+            };
+
+            var renderMoveHistory = function (moves) {
+                var historyElement = $('#move-history').empty();
+                historyElement.empty();
+                for (var i = 0; i < moves.length; i = i + 2) {
+                    historyElement.append('<span>' + moves[i] + ' ' + ( moves[i + 1] ? moves[i + 1] : ' ') + '</span><br>')
+                }
+                historyElement.scrollTop(historyElement[0].scrollHeight);
+
+            };
+
+            var loadMove = function () {
+                $.post('/api.php', {
+                    "state": game.fen(),
+                    "strategy": $('#strategy').val()
+                }, function(data) {
+                    if(data.error) {
+                        alert(data.error);
+                        return;
+                    }
+                    if(data.move === null) {
+                        alert('Game over');
+                        return;
+                    }
+
+                    game.move(data.move);
+                    renderMoveHistory(game.history());
+                    if (game.game_over()) {
+                        alert('Game over');
+                    }
+                }, 'json');
+            };
+
+            var onDrop = function (source, target) {
+
+                var move = game.move({
+                    from: source,
+                    to: target,
+                    promotion: 'q'
+                });
+
+                removeGreySquares();
+                if (move === null) {
+                    return 'snapback';
+                }
+
+                renderMoveHistory(game.history());
+                loadMove();
+            };
+
+            var onSnapEnd = function () {
+                board.position(game.fen());
+            };
+
+            var onMouseoverSquare = function(square, piece) {
+                var moves = game.moves({
+                    square: square,
+                    verbose: true
+                });
+
+                if (moves.length === 0) return;
+
+                greySquare(square);
+
+                for (var i = 0; i < moves.length; i++) {
+                    greySquare(moves[i].to);
+                }
+            };
+
+            var onMouseoutSquare = function(square, piece) {
+                removeGreySquares();
+            };
+
+            var removeGreySquares = function() {
+                $('#board .square-55d63').css('background', '');
+            };
+
+            var greySquare = function(square) {
+                var squareEl = $('#board .square-' + square);
+
+                var background = '#a9a9a9';
+                if (squareEl.hasClass('black-3c85d') === true) {
+                    background = '#696969';
+                }
+
+                squareEl.css('background', background);
+            };
+
+            var board = ChessBoard('board', {
+                draggable: true,
+                position: 'start',
+                onDragStart: onDragStart,
+                onDrop: onDrop,
+                onMouseoutSquare: onMouseoutSquare,
+                onMouseoverSquare: onMouseoverSquare,
+                onSnapEnd: onSnapEnd,
+                pieceTheme: 'http://chessboardjs.com/img/chesspieces/alpha/{piece}.png'
+            });
+        });
+    </script>
+
+</body>
+
+</html>

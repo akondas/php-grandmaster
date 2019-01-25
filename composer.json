@@ -1,28 +1,38 @@
 {
-    "name": "itcraftsmanpl/php-grandmaster",
+    "name": "akondas/php-grandmaster",
     "type": "library",
     "description": "PHP-Grandmaster - chess engine written in PHP",
+    "keywords": [
+        "chess",
+        "game",
+        "chess engine",
+        "pattern recognition",
+        "artificial intelligence"
+    ],
+    "homepage": "https://github.com/akondas/php-grandmaster",
     "license": "MIT",
-    "keywords": ["chess","game","chess engine","pattern recognition","artificial intelligence"],
-    "homepage": "https://github.com/itcraftsmanpl/php-grandmaster",
     "authors": [
         {
             "name": "Arkadiusz Kondas",
             "email": "arkadiusz.kondas@gmail.com"
         }
     ],
-    "autoload": {
-        "psr-0": {
-            "Grandmaster": "src/"
-        }
-    },
     "require": {
-        "php": ">=7.1"
+        "php": "^7.2",
+        "ext-json": "*",
+        "ryanhs/chess.php": "^1.0"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.14",
         "phpunit/phpunit": "^5.2"
     },
-    "config": {
-        "bin-dir": "bin"
+    "autoload": {
+        "psr-4": {
+            "Grandmaster\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "./vendor/bin/phpunit",
+        "fix-cs": "./vendor/bin/php-cs-fixer fix src tests --config=.php_cs"
     }
 }
