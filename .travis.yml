@@ -7,5 +7,12 @@ matrix:
     - os: linux
       php: '7.2'
 
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+install:
+  - composer install
+
 script:
   - composer build
