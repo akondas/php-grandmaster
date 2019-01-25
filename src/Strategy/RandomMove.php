@@ -24,7 +24,7 @@ final class RandomMove implements Strategy
         $this->game->load($state);
         $moves = $this->game->moves();
 
-        if(count($moves) === 0) {
+        if (count($moves) === 0) {
             return null;
         }
 

@@ -5,11 +5,7 @@ matrix:
 
   include:
     - os: linux
-      php: '7.0'
-
-install:
-  - curl -s http://getcomposer.org/installer | php
-  - php composer.phar install --dev --no-interaction --ignore-platform-reqs
+      php: '7.2'
 
 script:
-  - bin/phpunit
+  - composer build

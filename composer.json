@@ -33,6 +33,11 @@
     },
     "scripts": {
         "test": "./vendor/bin/phpunit",
-        "fix-cs": "./vendor/bin/php-cs-fixer fix src tests --config=.php_cs"
+        "fix-cs": "./vendor/bin/php-cs-fixer fix src tests --config=.php_cs",
+        "check-cs": "./vendor/bin/php-cs-fixer fix src tests --config=.php_cs --dry-run",
+        "build": [
+            "@check-cs",
+            "@test"
+        ]
     }
 }

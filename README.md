@@ -1,15 +1,17 @@
 # PHP-Grandmaster - chess engine written in PHP
 
-## Documentation
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.2-8892BF.svg)](https://php.net/)
+[![Build Status](https://travis-ci.org/akondas/php-grandmaster.svg?branch=master)](https://travis-ci.org/akondas/php-grandmaster)
 
-In progress ...
 
-## Installation
+Inspiration from great post: [A step-by-step guide to building a simple chess AI](https://medium.freecodecamp.org/simple-chess-ai-step-by-step-1d55a9266977)
 
-Currently this library is in the process of developing, but You can install it with Composer:
+## Demo
+
+Run local web server and play :D
 
 ```
-composer require itcraftsmanpl/php-grandmaster
+php -S localhost:8000 -t public
 ```
 
 ## License
