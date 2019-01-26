@@ -4,25 +4,30 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8b1b24f5f71ed223386f58690c90d0c7",
+    "content-hash": "75ea462da82325f063823c262e8e473b",
     "packages": [
         {
-            "name": "ryanhs/chess.php",
-            "version": "v1.0.3",
+            "name": "akondas/chess.php",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ryanhs/chess.php.git",
-                "reference": "1efbef47e7b757957ff926d073606d6342e25445"
+                "url": "https://github.com/akondas/chess.php.git",
+                "reference": "348a4cc4ca086b287d75411d036a325f3ec6028c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ryanhs/chess.php/zipball/1efbef47e7b757957ff926d073606d6342e25445",
-                "reference": "1efbef47e7b757957ff926d073606d6342e25445",
+                "url": "https://api.github.com/repos/akondas/chess.php/zipball/348a4cc4ca086b287d75411d036a325f3ec6028c",
+                "reference": "348a4cc4ca086b287d75411d036a325f3ec6028c",
                 "shasum": ""
             },
+            "require": {
+                "php": "^7.2"
+            },
             "require-dev": {
-                "johnkary/phpunit-speedtrap": "^1.0",
-                "phpunit/phpunit": "^5.3"
+                "friendsofphp/php-cs-fixer": "^2.14",
+                "johnkary/phpunit-speedtrap": "^3.0",
+                "phpstan/phpstan": "^0.11.1",
+                "phpunit/phpunit": "^7.5"
             },
             "type": "library",
             "autoload": {
@@ -38,10 +43,14 @@
                 {
                     "name": "ryan hs",
                     "email": "mr.ryansilalahi@gmail.com"
+                },
+                {
+                    "name": "Arkadiusz Kondas",
+                    "email": "arkadiusz.kondas@gmail.com"
                 }
             ],
-            "description": "chess.php is a PHP chess library that is used for chess move generation/validation, piece placement/movement, and check/checkmate/stalemate detection - basically everything but the AI. NOTE: this is a port of chess.js for php",
-            "time": "2017-08-25T08:56:01+00:00"
+            "description": "chess.php is a PHP chess library that is used for chess move generation/validation, piece placement/movement, and check/checkmate/stalemate detection",
+            "time": "2019-01-26T20:48:08+00:00"
         }
     ],
     "packages-dev": [
@@ -2533,7 +2542,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.2"
+        "php": "^7.2",
+        "ext-json": "*"
     },
     "platform-dev": []
 }

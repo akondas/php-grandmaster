@@ -2,9 +2,9 @@
 
 namespace Grandmaster;
 
+use Grandmaster\Chessboard\ChessphpChessboard;
 use Grandmaster\Strategy\PositionEvaluation;
 use Grandmaster\Strategy\RandomMove;
-use Ryanhs\Chess\Chess;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -27,6 +27,6 @@ if(!in_array($strategy, $strategies, true)) {
 }
 
 /** @var Strategy $strategy */
-$strategy = new $strategy(new Chess());
+$strategy = new $strategy(new ChessphpChessboard());
 
 echo json_encode(['move' => $strategy->nextMove($state)]);

@@ -4,25 +4,25 @@ declare(strict_types=1);
 
 namespace Grandmaster\Strategy;
 
+use Grandmaster\Chessboard;
 use Grandmaster\Strategy;
-use Ryanhs\Chess\Chess;
 
 final class RandomMove implements Strategy
 {
     /**
-     * @var Chess
+     * @var Chessboard
      */
-    private $game;
+    private $board;
 
-    public function __construct(Chess $game)
+    public function __construct(Chessboard $board)
     {
-        $this->game = $game;
+        $this->board = $board;
     }
 
     public function nextMove(string $state): ?string
     {
-        $this->game->load($state);
-        $moves = $this->game->moves();
+        $this->board->state($state);
+        $moves = $this->board->moves();
 
         if (count($moves) === 0) {
             return null;
