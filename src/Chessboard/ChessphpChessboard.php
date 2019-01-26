@@ -19,13 +19,21 @@ final class ChessphpChessboard implements Chessboard
         $this->chess = new Chess();
     }
 
-    public function state(string $fen): void
+    public function setState(string $fen): void
     {
         $this->chess->load($fen);
     }
 
+    /**
+     * @return string[]
+     */
     public function moves(): array
     {
         return $this->chess->moves();
+    }
+
+    public function board(): array
+    {
+        return $this->chess->export()->board;
     }
 }

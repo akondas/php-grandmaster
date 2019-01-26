@@ -24,11 +24,16 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.14",
-        "phpunit/phpunit": "^5.2"
+        "phpunit/phpunit": "^7.5"
     },
     "autoload": {
         "psr-4": {
             "Grandmaster\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Grandmaster\\Tests\\": "tests/"
         }
     },
     "scripts": {

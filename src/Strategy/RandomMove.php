@@ -21,7 +21,7 @@ final class RandomMove implements Strategy
 
     public function nextMove(string $state): ?string
     {
-        $this->board->state($state);
+        $this->board->setState($state);
         $moves = $this->board->moves();
 
         if (count($moves) === 0) {
