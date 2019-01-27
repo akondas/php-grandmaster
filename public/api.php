@@ -3,6 +3,7 @@
 namespace Grandmaster;
 
 use Grandmaster\Chessboard\ChessphpChessboard;
+use Grandmaster\Evaluator\MaterialEvaluator;
 use Grandmaster\Strategy\PositionEvaluation;
 use Grandmaster\Strategy\RandomMove;
 
@@ -11,9 +12,12 @@ require_once __DIR__.'/../vendor/autoload.php';
 $state = $_POST['state'] ?? null;
 $strategy = $_POST['strategy'] ?? null;
 
+$chessboard = new ChessphpChessboard();
+
+/** @var Strategy[] $strategies */
 $strategies = [
-    RandomMove::class,
-    PositionEvaluation::class
+    RandomMove::class => new RandomMove($chessboard),
+    PositionEvaluation::class => new PositionEvaluation(new MaterialEvaluator(), $chessboard)
 ];
 
 if($state === null) {
@@ -21,12 +25,9 @@ if($state === null) {
     exit;
 }
 
-if(!in_array($strategy, $strategies, true)) {
-    echo json_encode(['error' => 'Unknow strategy']);
+if(!isset($strategies[$strategy])) {
+    echo json_encode(['error' => 'Unknown strategy']);
     exit;
 }
 
-/** @var Strategy $strategy */
-$strategy = new $strategy(new ChessphpChessboard());
-
-echo json_encode(['move' => $strategy->nextMove($state)]);
+echo json_encode(['move' => $strategies[$strategy]->nextMove($state)]);

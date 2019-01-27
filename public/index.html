@@ -18,9 +18,10 @@
     <div id="board" class="board"></div>
     <br />
     <div class="info">
-        <label>Strategy: </label>
+        <label for="strategy">Strategy: </label>
         <select id="strategy">
             <option value="Grandmaster\Strategy\RandomMove">Random move</option>
+            <option selected="selected" value="Grandmaster\Strategy\PositionEvaluation">Position evaluation</option>
         </select>
         <br /><br />
         Move history:<br />
@@ -29,8 +30,11 @@
     </div>
 
     <script type="text/javascript">
+        var board, game;
+
         $(function() {
-            var game = new Chess();
+            game = new Chess();
+
             var onDragStart = function (source, piece, position, orientation) {
                 if (game.in_checkmate() === true || game.in_draw() === true ||
                     piece.search(/^b/) !== -1) {
@@ -63,6 +67,12 @@
                     }
 
                     game.move(data.move);
+
+                    // chessboard.js have some problems if we do it too fast ...
+                    setTimeout(function () {
+                        board.position(game.fen());
+                    }, 100);
+
                     renderMoveHistory(game.history());
                     if (game.game_over()) {
                         alert('Game over');
@@ -85,10 +95,6 @@
 
                 renderMoveHistory(game.history());
                 loadMove();
-            };
-
-            var onSnapEnd = function () {
-                board.position(game.fen());
             };
 
             var onMouseoverSquare = function(square, piece) {
@@ -125,14 +131,13 @@
                 squareEl.css('background', background);
             };
 
-            var board = ChessBoard('board', {
+            board = ChessBoard('board', {
                 draggable: true,
                 position: 'start',
                 onDragStart: onDragStart,
                 onDrop: onDrop,
                 onMouseoutSquare: onMouseoutSquare,
                 onMouseoverSquare: onMouseoverSquare,
-                onSnapEnd: onSnapEnd,
                 pieceTheme: 'http://chessboardjs.com/img/chesspieces/alpha/{piece}.png'
             });
         });

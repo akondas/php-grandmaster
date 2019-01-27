@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Grandmaster\Chessboard;
 
 use Grandmaster\Chessboard;
+use Grandmaster\Exception\InvalidFenException;
 use Ryanhs\Chess\Chess;
 
 final class ChessphpChessboard implements Chessboard
@@ -21,7 +22,19 @@ final class ChessphpChessboard implements Chessboard
 
     public function setState(string $fen): void
     {
-        $this->chess->load($fen);
+        if ($this->chess->load($fen) === false) {
+            throw new InvalidFenException(sprintf('Given "%s" FEN is invalid', $fen));
+        }
+    }
+
+    public function move(string $san): void
+    {
+        $this->chess->move($san);
+    }
+
+    public function undo(): void
+    {
+        $this->chess->undo();
     }
 
     /**
@@ -35,5 +48,10 @@ final class ChessphpChessboard implements Chessboard
     public function board(): array
     {
         return $this->chess->export()->board;
+    }
+
+    public function isWhiteTurn(): bool
+    {
+        return $this->chess->turn() === Chess::WHITE;
     }
 }
