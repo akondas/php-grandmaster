@@ -12,9 +12,13 @@ final class MaterialEvaluator implements Evaluator
 {
     public function evaluate(Chessboard $board): int
     {
-        return array_reduce($board->board(), function (int $sum, ?array $piece): int {
-            return $sum + $this->getPieceValue($piece);
-        }, 0);
+        // array_reduce is cleaner, but performance is the key here
+        $sum = 0;
+        foreach ($board->board() as $piece) {
+            $sum += $this->getPieceValue($piece);
+        }
+
+        return $sum;
     }
 
     private function getPieceValue(?array $piece): int

@@ -14,6 +14,12 @@ Run local web server and play :D
 php -S localhost:8000 -t public
 ```
 
+## Performance check
+
+```
+composer benchmark
+```
+
 ## License
 
 php-grandmaster is released under the MIT Licence. See the bundled LICENSE file for details.
