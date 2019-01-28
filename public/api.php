@@ -4,8 +4,10 @@ namespace Grandmaster;
 
 use Grandmaster\Chessboard\ChessphpChessboard;
 use Grandmaster\Evaluator\MaterialEvaluator;
+use Grandmaster\Search\MinimaxSearch;
 use Grandmaster\Strategy\PositionEvaluation;
 use Grandmaster\Strategy\RandomMove;
+use Grandmaster\Strategy\TreeSearch;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -13,11 +15,13 @@ $state = $_POST['state'] ?? null;
 $strategy = $_POST['strategy'] ?? null;
 
 $chessboard = new ChessphpChessboard();
+$evaluator = new MaterialEvaluator();
 
 /** @var Strategy[] $strategies */
 $strategies = [
     RandomMove::class => new RandomMove($chessboard),
-    PositionEvaluation::class => new PositionEvaluation(new MaterialEvaluator(), $chessboard)
+    PositionEvaluation::class => new PositionEvaluation($evaluator, $chessboard),
+    TreeSearch::class => new TreeSearch(new MinimaxSearch($evaluator, 3), $chessboard)
 ];
 
 if($state === null) {
