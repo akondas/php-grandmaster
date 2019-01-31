@@ -31,7 +31,7 @@ final class MinimaxSearch implements Search
         // array_reverse forces to move pawns (instead rooks)
         $moves = array_reverse($board->moves());
         $whiteTurn = $board->isWhiteTurn();
-        $bestValue = $whiteTurn ? PHP_INT_MAX : PHP_INT_MIN;
+        $bestValue = $whiteTurn ? 99999 : -99999;
         $bestMove = null;
 
         if (count($moves) === 0) {
@@ -40,7 +40,7 @@ final class MinimaxSearch implements Search
 
         foreach ($moves as $san) {
             $board->move($san);
-            $newValue = $this->minimax($this->depth - 1, $board);
+            $newValue = $this->minimax($this->depth - 1, -100000, 100000, $board);
             if ($whiteTurn ? $newValue < $bestValue : $newValue > $bestValue) {
                 $bestMove = $san;
                 $bestValue = $newValue;
@@ -51,7 +51,7 @@ final class MinimaxSearch implements Search
         return $bestMove;
     }
 
-    private function minimax(int $depth, Chessboard $board): int
+    private function minimax(int $depth, int $alpha, int $beta, Chessboard $board): int
     {
         $whiteTurn = $board->isWhiteTurn();
 
@@ -60,18 +60,26 @@ final class MinimaxSearch implements Search
         }
 
         if ($whiteTurn) {
-            $bestValue = PHP_INT_MAX;
+            $bestValue = 99999;
             foreach ($board->moves() as $san) {
                 $board->move($san);
-                $bestValue = min($bestValue, $this->minimax($depth - 1, $board));
+                $bestValue = min($bestValue, $this->minimax($depth - 1, $alpha, $beta, $board));
                 $board->undo();
+                $beta = min($beta, $bestValue);
+                if ($beta <= $alpha) {
+                    return $bestValue;
+                }
             }
         } else {
-            $bestValue = PHP_INT_MIN;
+            $bestValue = -99999;
             foreach ($board->moves() as $san) {
                 $board->move($san);
-                $bestValue = max($bestValue, $this->minimax($depth - 1, $board));
+                $bestValue = max($bestValue, $this->minimax($depth - 1, $alpha, $beta, $board));
                 $board->undo();
+                $alpha = max($alpha, $bestValue);
+                if ($beta <= $alpha) {
+                    return $bestValue;
+                }
             }
         }
 
