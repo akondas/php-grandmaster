@@ -34,4 +34,11 @@ if(!isset($strategies[$strategy])) {
     exit;
 }
 
-echo json_encode(['move' => $strategies[$strategy]->nextMove($state)]);
+$startTime = microtime(true);
+$move = $strategies[$strategy]->nextMove($state);
+
+echo json_encode([
+    'move' => $move,
+    'movesEvaluated' => $chessboard->moveCount(),
+    'time' => microtime(true) - $startTime
+]);

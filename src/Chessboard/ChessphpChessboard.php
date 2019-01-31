@@ -15,6 +15,11 @@ final class ChessphpChessboard implements Chessboard
      */
     private $chess;
 
+    /**
+     * @var int
+     */
+    private $moveCount = 0;
+
     public function __construct()
     {
         $this->chess = new Chess();
@@ -30,6 +35,7 @@ final class ChessphpChessboard implements Chessboard
     public function move(string $san): void
     {
         $this->chess->move($san);
+        ++$this->moveCount;
     }
 
     public function undo(): void
@@ -53,5 +59,10 @@ final class ChessphpChessboard implements Chessboard
     public function isWhiteTurn(): bool
     {
         return $this->chess->turn() === Chess::WHITE;
+    }
+
+    public function moveCount(): int
+    {
+        return $this->moveCount;
     }
 }

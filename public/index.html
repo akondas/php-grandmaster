@@ -25,6 +25,10 @@
             <option selected="selected" value="Grandmaster\Strategy\TreeSearch">Tree search (depth: 3)</option>
         </select>
         <br /><br />
+        Moves evaluated: <span id="movesEvaluated"></span><br />
+        Time*: <span id="time"></span><br />
+        <small>*php time, http request latency not include</small>
+        <br /><br />
         Move history:<br />
         <div id="move-history" class="move-history">
         </div>
@@ -75,6 +79,8 @@
                     }, 100);
 
                     renderMoveHistory(game.history());
+                    $('#movesEvaluated').text(data.movesEvaluated);
+                    $('#time').text(data.time.toFixed(4) + 's');
                     if (game.game_over()) {
                         alert('Game over');
                     }

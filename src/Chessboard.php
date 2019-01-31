@@ -20,4 +20,6 @@ interface Chessboard
     public function board(): array;
 
     public function isWhiteTurn(): bool;
+
+    public function moveCount(): int;
 }
