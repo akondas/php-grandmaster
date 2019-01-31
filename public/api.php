@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Grandmaster;
 
 use Grandmaster\Chessboard\ChessphpChessboard;
@@ -13,6 +15,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 $state = $_POST['state'] ?? null;
 $strategy = $_POST['strategy'] ?? null;
+$depth = $_POST['depth'] ?? 3;
 
 $chessboard = new ChessphpChessboard();
 $evaluator = new MaterialEvaluator();
@@ -21,15 +24,15 @@ $evaluator = new MaterialEvaluator();
 $strategies = [
     RandomMove::class => new RandomMove($chessboard),
     PositionEvaluation::class => new PositionEvaluation($evaluator, $chessboard),
-    TreeSearch::class => new TreeSearch(new MinimaxSearch($evaluator, 3), $chessboard)
+    TreeSearch::class => new TreeSearch(new MinimaxSearch($evaluator, (int) $depth), $chessboard)
 ];
 
-if($state === null) {
+if ($state === null) {
     echo json_encode(['error' => 'State is required']);
     exit;
 }
 
-if(!isset($strategies[$strategy])) {
+if (!isset($strategies[$strategy])) {
     echo json_encode(['error' => 'Unknown strategy']);
     exit;
 }

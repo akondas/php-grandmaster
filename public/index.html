@@ -22,7 +22,18 @@
         <select id="strategy">
             <option value="Grandmaster\Strategy\RandomMove">Random move</option>
             <option value="Grandmaster\Strategy\PositionEvaluation">Position evaluation</option>
-            <option selected="selected" value="Grandmaster\Strategy\TreeSearch">Tree search (depth: 3)</option>
+            <option selected="selected" value="Grandmaster\Strategy\TreeSearch">Tree search</option>
+        </select>
+        <label for="depth">Depth (tree search): </label>
+        <select id="depth">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3" selected="selected">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
         </select>
         <br /><br />
         Moves evaluated: <span id="movesEvaluated"></span><br />
@@ -60,7 +71,8 @@
             var loadMove = function () {
                 $.post('/api.php', {
                     "state": game.fen(),
-                    "strategy": $('#strategy').val()
+                    "strategy": $('#strategy').val(),
+                    "depth": $('#depth').val()
                 }, function(data) {
                     if(data.error) {
                         alert(data.error);
