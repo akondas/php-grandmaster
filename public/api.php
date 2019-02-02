@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Grandmaster;
 
 use Grandmaster\Chessboard\ChessphpChessboard;
+use Grandmaster\Evaluator\CombinedEvaluator;
 use Grandmaster\Evaluator\MaterialEvaluator;
+use Grandmaster\Evaluator\PositionEvaluator;
 use Grandmaster\Search\MinimaxSearch;
 use Grandmaster\Strategy\PositionEvaluation;
 use Grandmaster\Strategy\RandomMove;
@@ -18,7 +20,10 @@ $strategy = $_POST['strategy'] ?? null;
 $depth = $_POST['depth'] ?? 3;
 
 $chessboard = new ChessphpChessboard();
-$evaluator = new MaterialEvaluator();
+$evaluator = new CombinedEvaluator([
+    new MaterialEvaluator(),
+    new PositionEvaluator()
+]);
 
 /** @var Strategy[] $strategies */
 $strategies = [

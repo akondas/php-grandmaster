@@ -21,7 +21,8 @@ return PhpCsFixer\Config::create()
         'pre_increment' => true,
         'single_quote' => true,
         'trim_array_spaces' => true,
-        'single_blank_line_before_namespace' => true
+        'single_blank_line_before_namespace' => true,
+        'array_indentation' => true
     ])
     ->setFinder(
         PhpCsFixer\Finder::create()
