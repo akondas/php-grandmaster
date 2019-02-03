@@ -4,46 +4,66 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title></title>
+    <title>PHP Grandmaster - chess engine written in pure PHP</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://chessboardjs.com/js/chessboard.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- Used to get images -->
-    <div id="board" class="board"></div>
-    <br />
-    <div class="info">
-        <label for="strategy">Strategy: </label>
-        <select id="strategy">
-            <option value="Grandmaster\Strategy\RandomMove">Random move</option>
-            <option value="Grandmaster\Strategy\PositionEvaluation">Position evaluation</option>
-            <option selected="selected" value="Grandmaster\Strategy\TreeSearch">Tree search</option>
-        </select>
-        <label for="depth">Depth (tree search): </label>
-        <select id="depth">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3" selected="selected">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-        </select>
-        <br /><br />
-        Moves evaluated: <span id="movesEvaluated"></span><br />
-        Time*: <span id="time"></span><br />
-        <small>*php time, http request latency not include</small>
-        <br /><br />
-        Move history:<br />
-        <div id="move-history" class="move-history">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <h5 class="my-0 mr-md-auto font-weight-normal">PHP Grandmaster</h5>
+        <a class="btn btn-outline-primary" href="https://github.com/akondas/php-grandmaster">
+            <i class="fab fa-github"></i>
+            GitHub
+        </a>
+    </div>
+    <div class="container">
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Play chess against PHP</h4>
+        </div>
+        <div class="card-body">
+            <div id="board" class="board"></div>
+            <br />
+            <div class="info">
+                <div style="display: none">
+                    <label for="strategy">Strategy: </label>
+                    <select id="strategy">
+                        <option value="Grandmaster\Strategy\RandomMove">Random move</option>
+                        <option value="Grandmaster\Strategy\PositionEvaluation">Position evaluation</option>
+                        <option selected="selected" value="Grandmaster\Strategy\TreeSearch">Tree search</option>
+                    </select>
+                    <label for="depth">Depth (tree): </label>
+                    <select id="depth">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" selected="selected">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                    <br /><br />
+                </div>
+                Moves evaluated: <span id="movesEvaluated"></span><br />
+                Time*: <span id="time"></span><br />
+                <small>*php time, http request latency not included</small>
+                <br /><br />
+                Move history:<br />
+                <div id="move-history" class="move-history">
+                </div>
+            </div>
         </div>
     </div>
+    </div>
+
 
     <script type="text/javascript">
         var board, game;
