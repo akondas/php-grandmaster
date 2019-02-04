@@ -20,7 +20,8 @@
     "require": {
         "php": "^7.2",
         "ext-json": "*",
-        "akondas/chess.php": "^1.0"
+        "akondas/chess.php": "^1.0",
+        "mnapoli/bref": "^0.3.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.14",

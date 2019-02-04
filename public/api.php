@@ -45,6 +45,9 @@ if (!isset($strategies[$strategy])) {
 $startTime = microtime(true);
 $move = $strategies[$strategy]->nextMove($state);
 
+// Support for AWS Lambda endpoint
+header('Access-Control-Allow-Origin: *');
+
 echo json_encode([
     'move' => $move,
     'movesEvaluated' => $chessboard->moveCount(),
