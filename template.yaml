@@ -11,6 +11,7 @@ Resources:
             CodeUri: .
             Handler: public/api.php
             Timeout: 30 # in seconds (API Gateway has a timeout of 30 seconds)
+            MemorySize: 2048
             Runtime: provided
             Layers:
                 - 'arn:aws:lambda:us-east-1:209497400698:layer:php-73-fpm:1'
