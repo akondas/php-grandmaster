@@ -12,8 +12,8 @@ cache:
     - $HOME/.composer/cache
 
 install:
-  - pip install awscli
-  - pip install aws-sam-cli
+  - pip install --user awscli
+  - pip install --user aws-sam-cli
   - composer install
 
 script:
