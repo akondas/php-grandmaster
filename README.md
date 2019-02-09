@@ -2,7 +2,7 @@
 
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.2-8892BF.svg)](https://php.net/)
 [![Build Status](https://travis-ci.org/akondas/php-grandmaster.svg?branch=master)](https://travis-ci.org/akondas/php-grandmaster)
-
+[![AWS Lambda](https://img.shields.io/badge/AWS%20Lambda-deployed-green.svg)](https://arkadiuszkondas.com/php-grandmaster/)
 
 Inspiration from great post: [A step-by-step guide to building a simple chess AI](https://medium.freecodecamp.org/simple-chess-ai-step-by-step-1d55a9266977)
 
