@@ -16,3 +16,10 @@ install:
 
 script:
   - composer build
+
+deploy:
+  provider: script
+  script: bin/deploy.sh
+  skip_cleanup: true
+  on:
+    branch: master
