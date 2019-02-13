@@ -8,6 +8,7 @@ use Grandmaster\Chessboard\ChessphpChessboard;
 use Grandmaster\Evaluator\CombinedEvaluator;
 use Grandmaster\Evaluator\MaterialEvaluator;
 use Grandmaster\Evaluator\PositionEvaluator;
+use Grandmaster\Search\MinimaxFullSearch;
 use Grandmaster\Search\MinimaxSearch;
 use Grandmaster\Strategy\PositionEvaluation;
 use Grandmaster\Strategy\RandomMove;
@@ -21,15 +22,18 @@ $depth = $_POST['depth'] ?? 3;
 
 $chessboard = new ChessphpChessboard();
 $evaluator = new CombinedEvaluator([
-    new MaterialEvaluator(),
+    $materialEvaluator = new MaterialEvaluator(),
     new PositionEvaluator()
 ]);
 
 /** @var Strategy[] $strategies */
 $strategies = [
     RandomMove::class => new RandomMove($chessboard),
-    PositionEvaluation::class => new PositionEvaluation($evaluator, $chessboard),
-    TreeSearch::class => new TreeSearch(new MinimaxSearch($evaluator, (int) $depth), $chessboard)
+    PositionEvaluation::class => new PositionEvaluation($materialEvaluator, $chessboard),
+    TreeSearch::class => new TreeSearch(new MinimaxSearch($evaluator, (int) $depth), $chessboard),
+    // for my blog post live examples
+    TreeSearch::class.'PruningMaterial' => new TreeSearch(new MinimaxSearch($materialEvaluator, (int) $depth), $chessboard),
+    TreeSearch::class.'FullMaterial' => new TreeSearch(new MinimaxFullSearch($materialEvaluator, (int) $depth), $chessboard)
 ];
 
 if ($state === null) {
