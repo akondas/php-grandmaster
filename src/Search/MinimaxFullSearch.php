@@ -37,6 +37,10 @@ final class MinimaxFullSearch implements Search
         $bestValue = $whiteTurn ? 99999 : -99999;
         $bestMove = null;
 
+        if (\count($moves) === 1) {
+            return reset($moves);
+        }
+
         foreach ($moves as $san) {
             $board->move($san);
             $newValue = $this->minimax($this->depth - 1, $board);
