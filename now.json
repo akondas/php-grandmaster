@@ -1,4 +1,7 @@
 {
   "version": 2,
-  "builds": [{ "src": "public/*.php", "use": "@now/php" }]
+  "builds": [
+    { "src": "public/api.php", "use": "@now/php" },
+    { "src": "vendor.php", "use": "@now/php" }
+  ]
 }

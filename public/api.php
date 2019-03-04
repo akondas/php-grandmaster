@@ -14,10 +14,11 @@ use Grandmaster\Strategy\PositionEvaluation;
 use Grandmaster\Strategy\RandomMove;
 use Grandmaster\Strategy\TreeSearch;
 
-var_dump($_SERVER);
-die;
-
-require_once __DIR__.'/../vendor/autoload.php';
+if (true) {
+    require_once __DIR__ . '/../vendor.php';
+} else {
+    require_once __DIR__ . '/../vendor/autoload.php';
+}
 
 $state = $_POST['state'] ?? null;
 $strategy = $_POST['strategy'] ?? null;
