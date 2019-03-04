@@ -6,6 +6,9 @@
 
 Inspiration from great post: [A step-by-step guide to building a simple chess AI](https://medium.freecodecamp.org/simple-chess-ai-step-by-step-1d55a9266977)
 
+## Tutorial
+
+**[Write your own simple chess AI in PHP](https://arkadiuszkondas.com/write-your-own-simple-chess-ai-in-php/)**
 
 ## Live demo running on AWS Lambda - serverless PHP
 
