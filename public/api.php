@@ -14,7 +14,7 @@ use Grandmaster\Strategy\PositionEvaluation;
 use Grandmaster\Strategy\RandomMove;
 use Grandmaster\Strategy\TreeSearch;
 
-echo PHP_SAPI;
+var_dump($_SERVER);
 die;
 
 require_once __DIR__.'/../vendor/autoload.php';
