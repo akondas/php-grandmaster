@@ -15,9 +15,9 @@ use Grandmaster\Strategy\RandomMove;
 use Grandmaster\Strategy\TreeSearch;
 
 if (true) {
-    require_once __DIR__ . '/../vendor.php';
+    require_once __DIR__.'/../vendor.php';
 } else {
-    require_once __DIR__ . '/../vendor/autoload.php';
+    require_once __DIR__.'/../vendor/autoload.php';
 }
 
 $state = $_POST['state'] ?? null;
