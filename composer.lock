@@ -802,6 +802,7 @@
                 "lambda",
                 "serverless"
             ],
+            "abandoned": "bref/bref",
             "time": "2019-01-31T13:55:26+00:00"
         },
         {
@@ -1377,30 +1378,31 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v4.2.2",
+            "version": "v4.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "a633d422a09242064ba24e44a6e1494c5126de86"
+                "reference": "8bccc59e61b41963d14c3dbdb23181e5c932a1d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/a633d422a09242064ba24e44a6e1494c5126de86",
-                "reference": "a633d422a09242064ba24e44a6e1494c5126de86",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/8bccc59e61b41963d14c3dbdb23181e5c932a1d5",
+                "reference": "8bccc59e61b41963d14c3dbdb23181e5c932a1d5",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1.3",
+                "symfony/mime": "^4.3|^5.0",
                 "symfony/polyfill-mbstring": "~1.1"
             },
             "require-dev": {
                 "predis/predis": "~1.0",
-                "symfony/expression-language": "~3.4|~4.0"
+                "symfony/expression-language": "^3.4|^4.0|^5.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.2-dev"
+                    "dev-master": "4.4-dev"
                 }
             },
             "autoload": {
@@ -1427,7 +1429,69 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-05T16:37:49+00:00"
+            "time": "2019-11-28T13:33:56+00:00"
+        },
+        {
+            "name": "symfony/mime",
+            "version": "v4.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/mime.git",
+                "reference": "010cc488e56cafe5f7494dea70aea93100c234df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/010cc488e56cafe5f7494dea70aea93100c234df",
+                "reference": "010cc488e56cafe5f7494dea70aea93100c234df",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3",
+                "symfony/polyfill-intl-idn": "^1.10",
+                "symfony/polyfill-mbstring": "^1.0"
+            },
+            "conflict": {
+                "symfony/mailer": "<4.4"
+            },
+            "require-dev": {
+                "egulias/email-validator": "^2.1.10",
+                "symfony/dependency-injection": "^3.4|^4.1|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Mime\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "A library to manipulate MIME messages",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "mime",
+                "mime-type"
+            ],
+            "time": "2019-11-30T08:27:26+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -1474,7 +1538,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "backendtea@gmail.com"
+                    "email": "BackEndTea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -1488,17 +1552,79 @@
             "time": "2018-08-06T14:22:27+00:00"
         },
         {
-            "name": "symfony/polyfill-mbstring",
-            "version": "v1.10.0",
+            "name": "symfony/polyfill-intl-idn",
+            "version": "v1.13.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494"
+                "url": "https://github.com/symfony/polyfill-intl-idn.git",
+                "reference": "6f9c239e61e1b0c9229a28ff89a812dc449c3d46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/c79c051f5b3a46be09205c73b80b346e4153e494",
-                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/6f9c239e61e1b0c9229a28ff89a812dc449c3d46",
+                "reference": "6f9c239e61e1b0c9229a28ff89a812dc449c3d46",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/polyfill-mbstring": "^1.3",
+                "symfony/polyfill-php72": "^1.9"
+            },
+            "suggest": {
+                "ext-intl": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.13-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Intl\\Idn\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Laurent Bassin",
+                    "email": "laurent@bassin.info"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for intl's idn_to_ascii and idn_to_utf8 functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "idn",
+                "intl",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2019-11-27T13:56:44+00:00"
+        },
+        {
+            "name": "symfony/polyfill-mbstring",
+            "version": "v1.13.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "7b4aab9743c30be783b73de055d24a39cf4b954f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7b4aab9743c30be783b73de055d24a39cf4b954f",
+                "reference": "7b4aab9743c30be783b73de055d24a39cf4b954f",
                 "shasum": ""
             },
             "require": {
@@ -1510,7 +1636,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.9-dev"
+                    "dev-master": "1.13-dev"
                 }
             },
             "autoload": {
@@ -1540,6 +1666,61 @@
             "keywords": [
                 "compatibility",
                 "mbstring",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2019-11-27T14:18:11+00:00"
+        },
+        {
+            "name": "symfony/polyfill-php72",
+            "version": "v1.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php72.git",
+                "reference": "9050816e2ca34a8e916c3a0ae8b9c2fccf68b631"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/9050816e2ca34a8e916c3a0ae8b9c2fccf68b631",
+                "reference": "9050816e2ca34a8e916c3a0ae8b9c2fccf68b631",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.9-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php72\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 7.2+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
                 "polyfill",
                 "portable",
                 "shim"
@@ -2460,7 +2641,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🅱 Nette Bootstrap: the simple way to configure and bootstrap your Nette application.",
+            "description": "? Nette Bootstrap: the simple way to configure and bootstrap your Nette application.",
             "homepage": "https://nette.org",
             "keywords": [
                 "bootstrapping",
@@ -2525,7 +2706,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "💎 Nette Dependency Injection Container: Flexible, compiled and full-featured DIC with perfectly usable autowiring and support for all new PHP 7.1 features.",
+            "description": "? Nette Dependency Injection Container: Flexible, compiled and full-featured DIC with perfectly usable autowiring and support for all new PHP 7.1 features.",
             "homepage": "https://nette.org",
             "keywords": [
                 "compiled",
@@ -2590,7 +2771,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🔍 Nette Finder: find files and directories with an intuitive API.",
+            "description": "? Nette Finder: find files and directories with an intuitive API.",
             "homepage": "https://nette.org",
             "keywords": [
                 "filesystem",
@@ -2650,7 +2831,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
+            "description": "? Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -2713,7 +2894,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🐘 Nette PHP Generator: generates neat PHP code for you. Supports new PHP 7.3 features.",
+            "description": "? Nette PHP Generator: generates neat PHP code for you. Supports new PHP 7.3 features.",
             "homepage": "https://nette.org",
             "keywords": [
                 "code",
@@ -2777,7 +2958,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍀 Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
+            "description": "? Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
             "homepage": "https://nette.org",
             "keywords": [
                 "autoload",
@@ -2850,7 +3031,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🛠 Nette Utils: lightweight utilities for string & array manipulation, image handling, safe JSON encoding/decoding, validation, slug or strong password generating etc.",
+            "description": "? Nette Utils: lightweight utilities for string & array manipulation, image handling, safe JSON encoding/decoding, validation, slug or strong password generating etc.",
             "homepage": "https://nette.org",
             "keywords": [
                 "array",
@@ -5044,61 +5225,6 @@
                 "shim"
             ],
             "time": "2018-09-21T06:26:08+00:00"
-        },
-        {
-            "name": "symfony/polyfill-php72",
-            "version": "v1.10.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "9050816e2ca34a8e916c3a0ae8b9c2fccf68b631"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/9050816e2ca34a8e916c3a0ae8b9c2fccf68b631",
-                "reference": "9050816e2ca34a8e916c3a0ae8b9c2fccf68b631",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.9-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php72\\": ""
-                },
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill backporting some PHP 7.2+ features to lower PHP versions",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "time": "2018-09-21T13:07:52+00:00"
         },
         {
             "name": "symfony/stopwatch",
