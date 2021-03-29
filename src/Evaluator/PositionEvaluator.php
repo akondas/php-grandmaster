@@ -44,7 +44,7 @@ final class PositionEvaluator implements Evaluator
             case 'q':
                 return $isWhite ? PositionValue::QUEEN_WHITE[$i][$j] : PositionValue::QUEEN_BLACK[$i][$j];
             case 'k':
-                return $isWhite ? PositionValue::KNIGHT_WHITE[$i][$j] : PositionValue::KING_BLACK[$i][$j];
+                return $isWhite ? PositionValue::KING_WHITE[$i][$j] : PositionValue::KING_BLACK[$i][$j];
             default:
                 return 0;
         }
